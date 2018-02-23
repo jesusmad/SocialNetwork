@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Social Network</string>
+    <string name="log_in">Login</string>
+    <string name="log_out">Logout</string>
+    <string name="register">Register now!</string>
+</resources>
