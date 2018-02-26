@@ -3,7 +3,6 @@ package com.althreeus.socialnetwork.helper
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.althreeus.socialnetwork.views.MainActivity
 import java.util.*
 
 @Suppress("DEPRECATION")

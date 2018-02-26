@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.althreeus.socialnetwork.views.MainActivity">
+    tools:context="com.althreeus.socialnetwork.views.LoginActivity">
 
     <include
+        android:id="@+id/mainInclude"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/login" />
