@@ -13,4 +13,8 @@
     <string name="sex_w">Mujer</string>
     <string name="accept">Aceptar</string>
     <string name="clear">Borrar</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
 </resources>
