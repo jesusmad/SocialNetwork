@@ -2,5 +2,8 @@
     <string name="app_name">Red Social</string>
     <string name="log_in">Ingresar</string>
     <string name="log_out">Desconectar</string>
-    <string name="register">Registrate ahora!</string>
+    <string name="register">Regístrate</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="keep_session">Mantener sesión</string>
 </resources>
