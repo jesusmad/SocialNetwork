@@ -15,10 +15,10 @@
         android:layout_marginRight="@dimen/text_input">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/etLoginUsername"
+            android:id="@+id/etRegisterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username" />
+            android:hint="@string/name" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -29,23 +29,62 @@
         android:layout_marginRight="@dimen/text_input">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/etLoginPassword"
+            android:id="@+id/etRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_input"
+        android:layout_marginRight="@dimen/text_input">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_input"
+        android:layout_marginRight="@dimen/text_input">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etGithubUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/github_user" />
     </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/checkbox_top">
-        <CheckBox
-            android:id="@+id/chkbxSession"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/keep_session" />
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioBtnMan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sex_m" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnWoman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sex_w" />
+        </RadioGroup>
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,20 +95,20 @@
         android:layout_marginTop="@dimen/checkbox_top">
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/registerAccept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="2dp"
-            android:text="@string/log_in" />
+            android:text="@string/accept" />
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/registerClear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="2dp"
-            android:text="@string/register" />
+            android:text="@string/clear" />
     </LinearLayout>
 
 
