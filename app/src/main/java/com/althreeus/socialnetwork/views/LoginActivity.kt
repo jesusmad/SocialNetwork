@@ -15,6 +15,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         register.setOnClickListener(this)
+        login.setOnClickListener { navToHome() }
+    }
+
+    private fun navToHome() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onClick(v: View) {
