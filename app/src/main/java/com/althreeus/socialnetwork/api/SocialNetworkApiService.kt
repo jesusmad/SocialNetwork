@@ -47,6 +47,12 @@ interface SocialNetworkApiService {
 
     ):Observable<Result>
 
+    @GET("posts/technology/{idTechnology}")
+    fun getPostsByTechnology(
+            @Path("idTechnology")
+            idTechnology:Int
+    ):Observable<Result>
+
 
     companion object {
         fun create(): SocialNetworkApiService {
