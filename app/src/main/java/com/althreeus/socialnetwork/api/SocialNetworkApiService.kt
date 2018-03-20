@@ -1,12 +1,13 @@
 package com.althreeus.socialnetwork.api
 
-import android.database.Observable
+
 import com.althreeus.socialnetwork.model.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import rx.Observable
 
 /**
  * Created by Alejandro on 28/02/2018.
@@ -15,43 +16,43 @@ interface SocialNetworkApiService {
 
 
     @GET("users")
-    fun getUsers():Observable<Result>
+    fun getUsers(): Observable<Response>
 
     @GET("topics")
-    fun getTopics():Observable<Result>
+    fun getTopics():Observable<Response>
 
     @GET("posts/{idTopic}")
     fun getPosts(
      @Path("idTopic")
      idTopic: Int
 
-    ):Observable<Result>
+    ):Observable<Response>
 
     @GET("technologys")
-    fun getTechnologies():Observable<Result>
+    fun getTechnologies():Observable<Response>
 
     @GET("categorys")
-    fun getCategories():Observable<Result>
+    fun getCategories():Observable<Response>
 
     @GET("user/{idUser}")
     fun getUser(
             @Path("idUser")
             idUser: Int
 
-    ):Observable<Result>
+    ):Observable<Response>
 
     @GET("topic/{idTopic}")
     fun getTopic(
             @Path("idTopic")
             idTopic: Int
 
-    ):Observable<Result>
+    ):Observable<Response>
 
-    @GET("posts/technology/{idTechnology}")
-    fun getPostsByTechnology(
+    @GET("topics/technology/{idTechnology}")
+    fun getTopicsByTechnology(
             @Path("idTechnology")
             idTechnology:Int
-    ):Observable<Result>
+    ):Observable<Response>
 
 
     companion object {

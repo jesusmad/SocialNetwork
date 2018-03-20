@@ -1,8 +1,6 @@
 package com.althreeus.socialnetwork.api
 
 import android.database.Observable
-import com.althreeus.socialnetwork.model.Result
-import com.althreeus.socialnetwork.model.User
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
