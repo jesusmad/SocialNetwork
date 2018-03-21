@@ -39,7 +39,7 @@ class PostsCustomAdapter (val context: Context,
 
         itemView.tvDate.text = dataItem.date
             itemView.tvContent.text = dataItem.content
-            itemView.tvUser.text = dataItem.idUser.toString()
+            itemView.tvUser.text = dataItem.nick
 
         }
     }
