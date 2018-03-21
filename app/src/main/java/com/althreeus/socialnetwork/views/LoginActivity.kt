@@ -9,6 +9,7 @@ import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.login.*
+import org.jetbrains.anko.toast
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -39,6 +40,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }else {
+            toast("Ese usuario no existe en nuestra base de datos")
         }
     }
 
