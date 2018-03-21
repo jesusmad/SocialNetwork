@@ -4,23 +4,33 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.GravityCompat
-import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.model.Topic
+import com.althreeus.socialnetwork.model.User
+import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
+    companion object {
+        var topics: ArrayList<Topic> = ArrayList()
+        var mytopics: ArrayList<Topic> = ArrayList()
+    }
+
+
+    private lateinit var socialnetservice: SocialNetworkService
+
+    private lateinit var user: User
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +40,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
+
+        socialnetservice = SocialNetworkService.instance
+
+        user = SocialNetworkService.userLogged!!
+
+        loadtopics()
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -42,6 +58,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun loadtopics() {
+
+        topics = ArrayList(socialnetservice.getTopics())
+
+        topics.forEach { if (it.idUser == user.id) mytopics.add(it)}
+
+
+
     }
 
     private fun setupViewPager() {

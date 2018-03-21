@@ -33,9 +33,7 @@ class LatestTopicsFragment : Fragment() {
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
 
-        val topics = TestTopicJ
-
-        adapter = CustomAdapterTopics(activity, R.layout.topic_row, topics.TOPICS)
+        adapter = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.topics)
         rvtopics.adapter = adapter
 
         return view

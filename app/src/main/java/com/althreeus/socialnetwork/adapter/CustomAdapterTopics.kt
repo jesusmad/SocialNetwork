@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.althreeus.socialnetwork.model.TestTopicJ
 import com.althreeus.socialnetwork.model.Topic
 import kotlinx.android.synthetic.main.topic_row.view.*
 
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.topic_row.view.*
  */
 class CustomAdapterTopics(val context: Context,
                            val layout: Int,
-                           val dataList: List<TestTopicJ>): RecyclerView.Adapter<CustomAdapterTopics.ViewHolder>() {
+                           val dataList: ArrayList<Topic>): RecyclerView.Adapter<CustomAdapterTopics.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,10 +32,9 @@ class CustomAdapterTopics(val context: Context,
 
     inner class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
 
-        fun bind(dataItem: TestTopicJ, position: Int){
+        fun bind(dataItem: Topic, position: Int){
 
-
-            //itemView.tvTopicNameRow.text = dataItem.name
+            itemView.tvTopicNameRow.text = dataItem.name
             itemView.tvUserNameRow.text = dataItem.nick
             itemView.tvDateRow.text = dataItem.date
             itemView.tvTechNameRow.text = dataItem.nameTechnology
