@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
@@ -33,7 +34,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val user = SocialNetworkService.instance.getUserByNickPassword(name, password)
 
         if (user != null){
+            val githubUser = GitHubService.instance.getGithubUser(user.nick)
+
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("githubUser", githubUser)
             startActivity(intent)
         }
     }

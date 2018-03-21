@@ -1,6 +1,8 @@
 package com.althreeus.socialnetwork.api
 
-import android.database.Observable
+import rx.Observable
+import com.althreeus.socialnetwork.model.GithubUser
+import com.althreeus.socialnetwork.model.Repository
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -21,10 +23,16 @@ interface GithubApiService {
     ): Observable<ResponseBody>
 
 
+    @GET("users/{nameUser}")
+    fun getUser(
+            @Path("nameUser")
+            nick: String
+    ): Observable<GithubUser>
 
-
-
-
+    @GET("users/{username}/repos")
+    fun getRepositories(
+            @Path("username") username: String
+    ): Observable<List<Repository>>
 
 
     companion object {

@@ -3,6 +3,7 @@
     package="com.althreeus.socialnetwork">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +23,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".views.RegisterActivity" />
-        <activity android:name=".views.ProfileActivity"></activity>
+        <activity android:name=".views.ProfileActivity" />
+        <activity android:name=".views.PostActivity"></activity>
     </application>
 
 </manifest>
