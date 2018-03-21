@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import com.althreeus.socialnetwork.model.TestTopic
+import com.althreeus.socialnetwork.model.TestTopicJ
 import kotlinx.android.synthetic.main.fragment_latest_topics.*
 
 
@@ -31,7 +32,8 @@ class LatestTopicsFragment : Fragment() {
 
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
-        val topics = TestTopic
+
+        val topics = TestTopicJ
 
         adapter = CustomAdapterTopics(activity, R.layout.topic_row, topics.TOPICS)
         rvtopics.adapter = adapter

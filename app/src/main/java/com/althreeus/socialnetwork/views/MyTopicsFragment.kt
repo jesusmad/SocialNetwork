@@ -12,6 +12,7 @@ import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 
 import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.model.TestTopic
+import com.althreeus.socialnetwork.model.TestTopicJ
 
 
 class MyTopicsFragment : Fragment() {
@@ -31,7 +32,7 @@ class MyTopicsFragment : Fragment() {
 
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
-        val topics = TestTopic
+        val topics = TestTopicJ
 
         val adapter = CustomAdapterTopics(activity, R.layout.topic_row, topics.TOPICS)
         rvtopics.adapter = adapter

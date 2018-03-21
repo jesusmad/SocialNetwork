@@ -1,5 +1,6 @@
 package com.althreeus.socialnetwork.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -67,7 +68,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
 
             R.id.nav_profile -> {
-
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
             }
 
             R.id.nav_users -> {
