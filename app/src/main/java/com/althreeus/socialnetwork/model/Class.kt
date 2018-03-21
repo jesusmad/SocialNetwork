@@ -1,6 +1,5 @@
 package com.althreeus.socialnetwork.model
 
-import android.graphics.Color
 
 /**
  * Created by Alejandro on 28/02/2018.
@@ -21,3 +20,9 @@ data class TestCategory(var id:Int=0,var name:String="")
 data class TestTechnology(var id:Int=0,var name:String="",var logo:String="",var color: String="")
 data class TestUser(var id: Int=0,var nick: String="",var password:String="",var email:String="",var idGit:Int=0,var nickGit:String="")
 data class TestPost(var id:Int=0,var idTopic: Int=0,var idUser: Int=0,var content:String="",var date:String="")
+
+
+
+//Object for GitHub data
+
+data class Repository (var id: Int=0, var name: String="")
