@@ -8,7 +8,7 @@ import com.althreeus.socialnetwork.api.SocialNetworkApiService
  */
 abstract class ServiceBase {
 
-    val monitor:Object   = Object()
+    val monitor:Object = Object()
 
     val apiService by lazy {
        SocialNetworkApiService.create()
