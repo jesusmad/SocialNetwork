@@ -37,7 +37,7 @@ class CustomAdapterTopics(val context: Context,
             itemView.tvTopicNameRow.text = dataItem.name
             itemView.tvUserNameRow.text = dataItem.nick
             itemView.tvDateRow.text = dataItem.date
-            itemView.tvTechNameRow.text = dataItem.nameTechnology
+            itemView.tvTechNameRow.text = dataItem.nametechnology
 
         }
 
