@@ -1,6 +1,5 @@
 package com.althreeus.socialnetwork.api
 
-import rx.Observable
 import com.althreeus.socialnetwork.model.GithubUser
 import com.althreeus.socialnetwork.model.Repository
 import okhttp3.ResponseBody
@@ -9,6 +8,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import rx.Observable
 
 /**
  * Created by Alejandro on 12/03/2018.

@@ -1,17 +1,11 @@
 package com.althreeus.socialnetwork.views
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
-import android.view.View
-import android.widget.EditText
+import android.support.v7.app.AppCompatActivity
 import com.althreeus.socialnetwork.R
-import com.althreeus.socialnetwork.api.GithubApiService
 import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
-import kotlinx.android.synthetic.main.login.view.*
 import kotlinx.android.synthetic.main.register.*
 import org.jetbrains.anko.toast
 

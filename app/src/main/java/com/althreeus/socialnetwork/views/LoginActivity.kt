@@ -1,14 +1,12 @@
 package com.althreeus.socialnetwork.views
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
