@@ -20,11 +20,11 @@ class ProfileActivity : AppCompatActivity() {
 
         val user = SocialNetworkService.userLogged
 
-        tvNameRepositories.setText(user!!.nick)
+        tvNameRepositories.setText(user!!.nickgit)
         Picasso.with(this).load(user.avatar_url).into(ivProfile)
-        tvRepositories.setText(user.nick)
+        tvRepositories.setText(user.nickgit)
 
-        val repositories = SocialNetworkService.instance.getRepositories(user.nick)
+        val repositories = SocialNetworkService.instance.getRepositories(user.nickgit)
 
         rvRepositories.layoutManager = LinearLayoutManager(this)
         rvRepositories.adapter = RepositoryCustomAdapter(this, R.layout.repositories_row, repositories)
