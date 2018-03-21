@@ -3,8 +3,10 @@ package com.althreeus.socialnetwork.views
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*
 
@@ -16,12 +18,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         login.setOnClickListener(this)
         register.setOnClickListener(this)
-        login.setOnClickListener { navToHome() }
-    }
-
-    private fun navToHome() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
     }
 
     override fun onClick(v: View) {
@@ -32,7 +28,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startHomeActivity() {
-        //Falta realizar llamada API para comprobar nick y password
+        val name = etLoginUsername.text.toString()
+        val password = etLoginPassword.text.toString()
+        val user = SocialNetworkService.instance.getUserByNickPassword(name, password)
+
+        if (user != null){
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun startRegisterActivity() {
