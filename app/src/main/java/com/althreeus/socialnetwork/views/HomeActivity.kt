@@ -2,19 +2,26 @@ package com.althreeus.socialnetwork.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+<<<<<<< HEAD
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+=======
+import android.support.design.widget.Snackbar
+>>>>>>> develop
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.althreeus.socialnetwork.R
+<<<<<<< HEAD
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
+=======
+import com.althreeus.socialnetwork.model.GithubUser
+>>>>>>> develop
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.ArrayList
@@ -22,6 +29,7 @@ import java.util.ArrayList
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
+<<<<<<< HEAD
     companion object {
         var topics: ArrayList<Topic> = ArrayList()
         var mytopics: ArrayList<Topic> = ArrayList()
@@ -33,11 +41,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var user: User
 
 
+=======
+>>>>>>> develop
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
+<<<<<<< HEAD
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
 
@@ -46,6 +57,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         user = SocialNetworkService.userLogged!!
 
         loadtopics()
+=======
+>>>>>>> develop
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

@@ -1,10 +1,8 @@
 package com.althreeus.socialnetwork.services
 
 import android.util.Log
-import com.althreeus.socialnetwork.api.GithubApiService
 import com.althreeus.socialnetwork.model.GithubUser
 import com.althreeus.socialnetwork.model.Repository
-import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 /**

@@ -2,7 +2,6 @@ package com.althreeus.socialnetwork.services
 
 import android.util.Log
 import com.althreeus.socialnetwork.model.*
-import com.althreeus.socialnetwork.views.RegisterActivity
 import rx.schedulers.Schedulers
 
 /**

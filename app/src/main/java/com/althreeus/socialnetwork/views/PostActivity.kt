@@ -1,10 +1,8 @@
 package com.althreeus.socialnetwork.views
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.adapter.PostsCustomAdapter
 import com.althreeus.socialnetwork.model.Post
