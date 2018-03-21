@@ -11,3 +11,7 @@
 \.idea/misc\.xml
 
 \.gradle/4\.1/fileHashes/fileHashes\.bin
+
+\.gradle/4\.1/taskHistory/fileSnapshots\.bin
+
+\.gradle/4\.1/taskHistory/taskHistory\.bin
