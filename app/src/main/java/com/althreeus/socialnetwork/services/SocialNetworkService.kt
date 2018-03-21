@@ -402,4 +402,36 @@ class SocialNetworkService : ServiceBase() {
 
     }
 
+
+    fun getRepositories(name: String): List<Topic>{
+
+        var repositories: MutableList<Topic> = mutableListOf()
+
+        apiService.getReposByUser(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                            repositories = body.repos
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return repositories
+    }
+
 }

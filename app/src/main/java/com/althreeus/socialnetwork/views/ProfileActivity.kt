@@ -7,6 +7,7 @@ import android.util.Log
 import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.adapter.RepositoryCustomAdapter
 import com.althreeus.socialnetwork.services.GitHubService
+import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -15,10 +16,9 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val repositories = GitHubService.instance.getRepositories("albertoperezs90")
+        val repositories = SocialNetworkService.instance.getRepositories("albertoperezs90")
 
-        repositories.forEach { repo ->
-            Log.d("repo", repo.name)
-        }
+        rvRepositories.layoutManager = LinearLayoutManager(this)
+        rvRepositories.adapter = RepositoryCustomAdapter(this, R.layout.repositories_row, repositories)
     }
 }

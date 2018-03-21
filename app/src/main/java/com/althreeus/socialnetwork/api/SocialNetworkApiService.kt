@@ -98,6 +98,13 @@ interface SocialNetworkApiService {
             @Field("name") name: String
     ):Observable<Response>
 
+
+    @GET("repos/{username}")
+    fun getReposByUser(
+            @Path("username") name: String
+    ): Observable<Response>
+
+
     companion object {
         fun create(): SocialNetworkApiService {
             val retrofit = Retrofit.Builder()
