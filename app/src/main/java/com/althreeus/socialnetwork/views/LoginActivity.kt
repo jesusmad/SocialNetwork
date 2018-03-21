@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         if (user != null){
             val githubUser = GitHubService.instance.getGithubUser(user.nick)
-
+            
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("githubUser", githubUser)
             startActivity(intent)
