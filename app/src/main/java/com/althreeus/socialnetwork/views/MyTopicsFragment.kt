@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 
 import com.althreeus.socialnetwork.R
-import com.althreeus.socialnetwork.model.TestTopic
-import com.althreeus.socialnetwork.model.TestTopicJ
 
 
 class MyTopicsFragment : Fragment() {
@@ -20,7 +18,6 @@ class MyTopicsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

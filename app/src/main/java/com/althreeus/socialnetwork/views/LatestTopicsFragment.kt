@@ -9,10 +9,6 @@ import com.althreeus.socialnetwork.R
 import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.Button
-import com.althreeus.socialnetwork.model.TestTopic
-import com.althreeus.socialnetwork.model.TestTopicJ
-import kotlinx.android.synthetic.main.fragment_latest_topics.*
 
 
 class LatestTopicsFragment : Fragment() {
