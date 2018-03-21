@@ -50,6 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                 toast("Te has registrado correctamente")
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+                finish()
             }else {
                 toast("Ese usuario ya existe")
             }
