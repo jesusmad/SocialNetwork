@@ -16,7 +16,7 @@ data class Result(val users:ArrayList<User>,val categories:ArrayList<Category>,v
 
 //Object for testing
 
-data class TestTopic(var id: Int=0,var idUser:Int=0,var nick:String="",var idTechnology:Int=0,var nameTechnology: String="",var idCategory:Int=0,var nameCategory: String="",var content:String="",var date:String="")
+//data class TestTopic(var id: Int=0,var idUser:Int=0,var nick:String="",var idTechnology:Int=0,var nameTechnology: String="",var idCategory:Int=0,var nameCategory: String="",var content:String="",var date:String="")
 data class TestCategory(var id:Int=0,var name:String="")
 data class TestTechnology(var id:Int=0,var name:String="",var logo:String="",var color: String="")
 data class TestUser(var id: Int=0,var nick: String="",var password:String="",var email:String="",var idGit:Int=0,var nickGit:String="")
