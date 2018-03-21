@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.api.GithubApiService
+import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.login.view.*
 import kotlinx.android.synthetic.main.register.*
@@ -41,12 +43,21 @@ class RegisterActivity : AppCompatActivity() {
         val password = etRegisterPassword.text.toString()
         val email = etRegisterEmail.text.toString()
         val gitUser = etGithubUser.text.toString()
-        val user = SocialNetworkService.instance.registerUser(name, password, email, gitUser)
+        val githubUser = GitHubService.instance.getGithubUser(gitUser)
 
-        if (user != null){
-            toast("Te has registrado correctamente")
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+        if (githubUser != null){
+            val user = SocialNetworkService.instance.registerUser(name, password, email, gitUser)
+
+            if (user != null){
+                toast("Te has registrado correctamente")
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("githubUser", githubUser)
+                startActivity(intent)
+            }else {
+                toast("Ese usuario ya existe")
+            }
+        }else {
+            toast("Ese usuario no existe en Github")
         }
     }
 
