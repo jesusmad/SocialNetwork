@@ -1,10 +1,7 @@
 package com.althreeus.socialnetwork.services
 
 import android.util.Log
-import com.althreeus.socialnetwork.model.Post
-import com.althreeus.socialnetwork.model.Technology
-import com.althreeus.socialnetwork.model.Topic
-import com.althreeus.socialnetwork.model.User
+import com.althreeus.socialnetwork.model.*
 import com.althreeus.socialnetwork.views.RegisterActivity
 import rx.schedulers.Schedulers
 
@@ -279,6 +276,130 @@ class SocialNetworkService : ServiceBase() {
         }
 
         return user
+    }
+
+    fun addTechnology(name: String):Technology?{
+
+        var technology:Technology? = null
+
+        apiService.addTechnology(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                           technology = body.technology
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return technology
+
+
+    }
+    fun addCategory(name: String):Category?{
+
+        var category:Category? = null
+
+        apiService.addCategory(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                            category = body.category
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return category
+
+
+    }
+
+    fun addPost( idTopic: Int, idUser: Int, content:String):Post?{
+
+        var post:Post? = null
+
+        apiService.addPost(idTopic,idUser,content)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                           post = body.post
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return post
+
+    }
+    fun addTopic( idUser: Int,idTechnology: Int,idCategory: Int, name:String):Topic?{
+
+        var topic:Topic? = null
+
+        apiService.addTopic(idUser,idTechnology,idCategory,name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                           topic = body.topic
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return topic
+
     }
 
 }

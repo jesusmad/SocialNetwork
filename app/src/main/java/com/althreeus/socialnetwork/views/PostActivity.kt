@@ -16,7 +16,7 @@ class PostActivity : AppCompatActivity() {
         private lateinit var posts:List<Post>
         private lateinit var service:SocialNetworkService
         private lateinit var adapter:PostsCustomAdapter
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
