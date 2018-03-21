@@ -11,7 +11,7 @@ data class Post(val id:Int,val idTopic: Int,val idUser: Int,val content:String,v
 data class Category(val id:Int,val name:String)
 data class Technology(val id:Int,val name:String,val logo:String,val color: String)
 data class Topic(val id: Int,val idUser:Int,val nick:String,val name:String,val description:String,val url:String,val idTechnology:Int,val nameTechnology: String,val idCategory:Int,val nameCategory: String,val date:String): Serializable
-data class Response(val users:ArrayList<User>, val categories:ArrayList<Category>, val posts:ArrayList<Post>, val technologies:ArrayList<Technology>, val topics:ArrayList<Topic>, val repos:ArrayList<Topic>, val user: User, val topic: Topic, val post: Post, val technology: Technology, val category: Category)
+data class Response(val users:ArrayList<User>, val categorys:ArrayList<Category>, val posts:ArrayList<Post>, val technologys:ArrayList<Technology>, val topics:ArrayList<Topic>, val repos:ArrayList<Topic>, val user: User, val topic: Topic, val post: Post, val technology: Technology, val category: Category)
 
 //huehuehue
 
