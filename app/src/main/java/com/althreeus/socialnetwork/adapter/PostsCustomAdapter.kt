@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.althreeus.socialnetwork.model.Post
 import com.althreeus.socialnetwork.model.Repository
+import kotlinx.android.synthetic.main.post_row.view.*
 import kotlinx.android.synthetic.main.repositories_row.view.*
 
 /**
@@ -36,7 +37,9 @@ class PostsCustomAdapter (val context: Context,
     inner class ViewHolder(viewLayout: View, val context: Context): RecyclerView.ViewHolder(viewLayout) {
         fun bind(dataItem: Post){
 
-
+        itemView.tvDate.text = dataItem.date
+            itemView.tvContent.text = dataItem.content
+            itemView.tvUser.text = dataItem.idUser.toString()
 
         }
     }
