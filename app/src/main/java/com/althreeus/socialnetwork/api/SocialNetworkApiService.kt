@@ -14,8 +14,6 @@ import rx.Observable
 interface SocialNetworkApiService {
 
 
-    @GET("users")
-    fun getUsers(): Observable<Response>
 
     @GET("topics")
     fun getTopics():Observable<Response>
@@ -69,6 +67,43 @@ interface SocialNetworkApiService {
             @Field("correo") email: String,
             @Field("nickgit") nickGit: String
     ): Observable<Response>
+
+    @FormUrlEncoded
+    @POST("technology")
+    fun addTechnology(
+            @Field("name") name: String
+    ): Observable<Response>
+
+    @FormUrlEncoded
+    @POST("post")
+    fun addPost(
+            @Field ("idtopic") idTopic: Int,
+            @Field ("iduser") idUser: Int,
+            @Field ("content") content:String
+
+    ): Observable<Response>
+
+    @FormUrlEncoded
+    @POST("category")
+    fun addCategory(
+            @Field("name") name: String
+    ): Observable<Response>
+
+    @FormUrlEncoded
+    @POST("topic")
+    fun addTopic(
+            @Field("iduser") idUser: Int,
+            @Field("idtechnology") idTechnology: Int,
+            @Field("idcategory") idCategory: Int,
+            @Field("name") name: String
+    ):Observable<Response>
+
+
+    @GET("repos/{username}")
+    fun getReposByUser(
+            @Path("username") name: String
+    ): Observable<Response>
+
 
     companion object {
         fun create(): SocialNetworkApiService {

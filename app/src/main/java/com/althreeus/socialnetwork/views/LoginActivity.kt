@@ -34,7 +34,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val user = SocialNetworkService.instance.getUserByNickPassword(name, password)
 
         if (user != null){
+            val githubUser = GitHubService.instance.getGithubUser(user.nick)
+
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("githubUser", githubUser)
             startActivity(intent)
         }
     }

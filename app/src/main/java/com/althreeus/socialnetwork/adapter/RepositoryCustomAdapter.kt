@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.althreeus.socialnetwork.model.Repository
 import com.althreeus.socialnetwork.model.Topic
+import com.althreeus.socialnetwork.views.PostActivity
 import kotlinx.android.synthetic.main.repositories_row.view.*
 
 /**
