@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.services.GitHubService
 import com.althreeus.socialnetwork.services.SocialNetworkService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login.*

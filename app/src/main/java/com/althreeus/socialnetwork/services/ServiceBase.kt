@@ -1,5 +1,6 @@
 package com.althreeus.socialnetwork.services
 
+import com.althreeus.socialnetwork.api.GithubApiService
 import com.althreeus.socialnetwork.api.SocialNetworkApiService
 
 /**
@@ -11,6 +12,10 @@ abstract class ServiceBase {
 
     val apiService by lazy {
        SocialNetworkApiService.create()
+    }
+
+    val githubService by lazy {
+        GithubApiService.create()
     }
 
 
