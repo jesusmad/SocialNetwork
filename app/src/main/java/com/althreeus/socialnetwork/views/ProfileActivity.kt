@@ -18,13 +18,13 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val user = intent.getSerializableExtra("githubUser") as GithubUser
+        val user = SocialNetworkService.userLogged
 
-        tvNameRepositories.setText(user.login)
-        Picasso.with(this).load(user.avatar_url).into(ivAvatarHome)
-        tvRepositories.setText(user.login)
+        tvNameRepositories.setText(user!!.nick)
+        Picasso.with(this).load(user.avatar_url).into(ivProfile)
+        tvRepositories.setText(user.nick)
 
-        val repositories = SocialNetworkService.instance.getRepositories(user.login)
+        val repositories = SocialNetworkService.instance.getRepositories(user.nick)
 
         rvRepositories.layoutManager = LinearLayoutManager(this)
         rvRepositories.adapter = RepositoryCustomAdapter(this, R.layout.repositories_row, repositories)

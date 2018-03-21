@@ -6,7 +6,7 @@ import java.io.Serializable
 /**
  * Created by Alejandro on 28/02/2018.
  */
-data class User (val id: Int,val nick: String,val password:String,val email:String,val idGit:Int,val nickGit:String)
+data class User (val id: Int,val nick: String,val password:String,val email:String,val idgit:Int,val nickgit:String, var avatar_url: String=""): Serializable
 data class Post(val id:Int,val idTopic: Int,val idUser: Int,val content:String,val date:String)
 data class Category(val id:Int,val name:String)
 data class Technology(val id:Int,val name:String,val logo:String,val color: String)

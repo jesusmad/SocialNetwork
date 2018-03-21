@@ -43,9 +43,12 @@ class RegisterActivity : AppCompatActivity() {
             val user = SocialNetworkService.instance.registerUser(name, password, email, gitUser)
 
             if (user != null){
+                user.avatar_url = githubUser.avatar_url
+
+                SocialNetworkService.userLogged = user
+
                 toast("Te has registrado correctamente")
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("githubUser", githubUser)
                 startActivity(intent)
             }else {
                 toast("Ese usuario ya existe")

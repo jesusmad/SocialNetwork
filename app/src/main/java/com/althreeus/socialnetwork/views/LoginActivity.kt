@@ -3,6 +3,7 @@ package com.althreeus.socialnetwork.views
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import com.althreeus.socialnetwork.R
 import com.althreeus.socialnetwork.services.GitHubService
@@ -30,12 +31,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val name = etLoginUsername.text.toString()
         val password = etLoginPassword.text.toString()
         val user = SocialNetworkService.instance.getUserByNickPassword(name, password)
-
         if (user != null){
-            val githubUser = GitHubService.instance.getGithubUser(user.nick)
-            
+            val githubUser = GitHubService.instance.getGithubUser(user.nickgit)
+            user.avatar_url = githubUser!!.avatar_url
+
+            SocialNetworkService.userLogged = user
+
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("githubUser", githubUser)
             startActivity(intent)
         }
     }
