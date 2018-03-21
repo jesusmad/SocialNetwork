@@ -15,7 +15,6 @@ class SocialNetworkService : ServiceBase() {
     companion object {
         val instance = SocialNetworkService()
         var userLogged: User? = null
-
     }
 
     fun getUser(iduser: Int): User? {
@@ -218,6 +217,37 @@ class SocialNetworkService : ServiceBase() {
 
 
 
+    }
+
+
+    fun getUserByNickPassword(name: String, password: String): User?{
+
+        var user: User? = null
+
+        apiService.getUserByNickPassword(name, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                            user = body.user
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return user
     }
 
 }

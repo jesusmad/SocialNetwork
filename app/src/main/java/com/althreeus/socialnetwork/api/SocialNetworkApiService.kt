@@ -7,6 +7,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import rx.Observable
 
 /**
@@ -54,6 +55,12 @@ interface SocialNetworkApiService {
             idTechnology:Int
     ):Observable<Response>
 
+
+    @GET("user")
+    fun getUserByNickPassword(
+            @Query("nick") name: String,
+            @Query("password") password: String
+     ): Observable<Response>
 
     companion object {
         fun create(): SocialNetworkApiService {
