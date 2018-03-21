@@ -24,7 +24,6 @@ interface SocialNetworkApiService {
     fun getPosts(
      @Path("idTopic")
      idTopic: Int
-
     ):Observable<Result>
 
     @GET("technologys")
@@ -37,14 +36,12 @@ interface SocialNetworkApiService {
     fun getUser(
             @Path("idUser")
             idUser: Int
-
     ):Observable<Result>
 
     @GET("topic/{idTopic}")
     fun getTopic(
             @Path("idTopic")
             idTopic: Int
-
     ):Observable<Result>
 
 
