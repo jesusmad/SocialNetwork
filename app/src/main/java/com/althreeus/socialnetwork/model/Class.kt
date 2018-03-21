@@ -13,6 +13,7 @@ data class Technology(val id:Int,val name:String,val logo:String,val color: Stri
 data class Topic(val id: Int,val idUser:Int,val nick:String,val name:String,val description:String,val url:String,val idTechnology:Int,val nameTechnology: String,val idCategory:Int,val nameCategory: String,val date:String)
 data class Response(val users:ArrayList<User>, val categories:ArrayList<Category>, val posts:ArrayList<Post>, val technologies:ArrayList<Technology>, val topics:ArrayList<Topic>, val user: User, val topic: Topic, val post: Post, val technology: Technology, val category: Category)
 
+//huehuehue
 
 
 //Object for testing
