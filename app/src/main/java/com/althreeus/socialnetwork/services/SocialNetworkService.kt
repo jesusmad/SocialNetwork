@@ -5,6 +5,7 @@ import com.althreeus.socialnetwork.model.Post
 import com.althreeus.socialnetwork.model.Technology
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
+import com.althreeus.socialnetwork.views.RegisterActivity
 import rx.schedulers.Schedulers
 
 /**
@@ -15,7 +16,6 @@ class SocialNetworkService : ServiceBase() {
     companion object {
         val instance = SocialNetworkService()
         var userLogged: User? = null
-
     }
 
     fun getUser(iduser: Int): User? {
@@ -218,6 +218,67 @@ class SocialNetworkService : ServiceBase() {
 
 
 
+    }
+
+
+    fun getUserByNickPassword(name: String, password: String): User?{
+
+        var user: User? = null
+
+        apiService.getUserByNickPassword(name, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                            user = body.user
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return user
+    }
+
+    fun registerUser(name: String, password: String, email: String, nickGit: String): User?{
+
+        var user: User? = null
+
+        apiService.registerUser(name, password, email, nickGit)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+                            user = body.user
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        },
+                        { error ->
+                            Log.e("Gestor", error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+        return user
     }
 
 }

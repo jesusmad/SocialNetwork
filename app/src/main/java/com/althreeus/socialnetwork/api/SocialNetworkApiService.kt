@@ -5,8 +5,7 @@ import com.althreeus.socialnetwork.model.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 import rx.Observable
 
 /**
@@ -54,6 +53,22 @@ interface SocialNetworkApiService {
             idTechnology:Int
     ):Observable<Response>
 
+
+    @GET("user")
+    fun getUserByNickPassword(
+            @Query("nick") name: String,
+            @Query("password") password: String
+     ): Observable<Response>
+
+
+    @FormUrlEncoded
+    @POST("user")
+    fun registerUser(
+            @Field("nick") name: String,
+            @Field("password") password: String,
+            @Field("correo") email: String,
+            @Field("nickgit") nickGit: String
+    ): Observable<Response>
 
     companion object {
         fun create(): SocialNetworkApiService {
