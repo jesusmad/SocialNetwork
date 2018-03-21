@@ -5,3 +5,9 @@
 /build
 /captures
 .externalNativeBuild
+
+*.lock
+
+\.idea/misc\.xml
+
+\.gradle/4\.1/fileHashes/fileHashes\.bin
