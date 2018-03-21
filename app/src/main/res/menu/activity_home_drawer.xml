@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_allrepos"
             android:icon="@drawable/ic_lista"
-            android:title="All repos" />
+            android:title="All topics" />
 
 
     </group>
