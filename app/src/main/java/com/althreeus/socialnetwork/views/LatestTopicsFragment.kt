@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView
 
 class LatestTopicsFragment : Fragment() {
 
-    private lateinit var adapter: CustomAdapterTopics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +27,9 @@ class LatestTopicsFragment : Fragment() {
 
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
+        //HomeActivity.adapterLatest = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.topics)
 
-        adapter = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.topics)
-        rvtopics.adapter = adapter
+        rvtopics.adapter = HomeActivity.adapterLatest
 
         return view
     }
