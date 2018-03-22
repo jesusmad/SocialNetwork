@@ -5,18 +5,6 @@
     android:orientation="vertical"
     tools:context="com.althreeus.socialnetwork.views.LatestTopicsFragment">
 
-    <!--<TextView-->
-        <!--android:id="@+id/textView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:background="@color/appbar_home"-->
-        <!--android:gravity="center"-->
-        <!--android:padding="8dp"-->
-        <!--android:text="My Topics"-->
-        <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-        <!--android:textColor="@android:color/white" />-->
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvMyTopics"
         android:layout_width="match_parent"

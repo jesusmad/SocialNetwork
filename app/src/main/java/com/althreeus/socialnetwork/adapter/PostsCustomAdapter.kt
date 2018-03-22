@@ -37,7 +37,7 @@ class PostsCustomAdapter (val context: Context,
     inner class ViewHolder(viewLayout: View, val context: Context): RecyclerView.ViewHolder(viewLayout) {
         fun bind(dataItem: Post){
 
-        itemView.tvDate.text = dataItem.date
+            itemView.tvDate.text = dataItem.date
             itemView.tvContent.text = dataItem.content
             itemView.tvUser.text = dataItem.nick
 

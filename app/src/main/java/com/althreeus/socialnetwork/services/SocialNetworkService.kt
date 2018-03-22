@@ -146,11 +146,9 @@ class SocialNetworkService : ServiceBase() {
 
                             posts = body.posts
 
-
                             synchronized(monitor){
                                 monitor.notifyAll()
                             }
-
 
 
                         },
@@ -211,8 +209,6 @@ class SocialNetworkService : ServiceBase() {
 
 
         return topics
-
-
 
     }
 

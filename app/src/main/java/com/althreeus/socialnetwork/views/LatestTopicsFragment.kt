@@ -27,8 +27,6 @@ class LatestTopicsFragment : Fragment() {
 
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
-        //HomeActivity.adapterLatest = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.topics)
-
         rvtopics.adapter = HomeActivity.adapterLatest
 
         return view

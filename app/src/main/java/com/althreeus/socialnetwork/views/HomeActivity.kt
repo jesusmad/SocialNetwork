@@ -4,26 +4,24 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 import com.althreeus.socialnetwork.R
+import com.althreeus.socialnetwork.adapter.ViewPagerAdapter
 import com.althreeus.socialnetwork.model.Technology
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
-import com.althreeus.socialnetwork.model.GithubUser
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +40,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var mytopics: ArrayList<Topic> = ArrayList()
 
     private var technologies: ArrayList<Technology> = ArrayList()
-
 
     private lateinit var socialnetservice: SocialNetworkService
 
@@ -63,14 +60,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
 
+        loadInfoDrawer()
+
         loadtopics()
         loadtechnologies()
 
         adapterLatest = CustomAdapterTopics(this, R.layout.topic_row, topics)
-        adapterMyTopics = CustomAdapterTopics(this, R.layout.topic_row, mytopics)
-
-
-
+        adapterMyTopics = CustomAdapterTopics(this, R.layout.mytopic_row, mytopics)
 
 
         fab.setOnClickListener { newTopic() }
@@ -81,6 +77,42 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.home, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.update -> {
+                loadtopics()
+                adapterLatest.notifyDataSetChanged()
+                adapterMyTopics.notifyDataSetChanged()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
+
+    private fun loadInfoDrawer() {
+
+        val ivDrawer = nav_view.getHeaderView(0).ivAvatarHome
+        val tvEmailDrawer = nav_view.getHeaderView(0).tvEmailHomeMenu
+        val tvNameDrawer = nav_view.getHeaderView(0).tvNameHomeMenu
+
+
+        Picasso.with(this).load(user.avatar_url).into(ivDrawer)
+
+        tvEmailDrawer.text = "${user.nick}@email.com"
+        tvNameDrawer.text = user.nickgit
+
     }
 
     private fun loadtechnologies() {
@@ -128,11 +160,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                             loadtopics()
 
-
                             adapterLatest.notifyDataSetChanged()
                             adapterMyTopics.notifyDataSetChanged()
-
-
 
                         }
 
@@ -165,16 +194,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         topics.clear()
         mytopics.clear()
 
-
         val aux = socialnetservice.getTopics()
-        topics.forEach { if (it.iduser == user.id) mytopics.add(it)}
 
         aux.forEach {
             topics.add(it)
             if (it.iduser == user.id)
                 mytopics.add(it)
+            Log.d(TAG, "TOPIC ID: ${it.id} USER ID: ${it.iduser} CAT ID: ${it.idcategory} TECH ID: ${it.idtechnology} " +
+                    "NAME: ${it.name} NICK: ${it.nick}")
         }
 
+        topics.reverse()
+        mytopics.reverse()
 
     }
 
@@ -232,25 +263,4 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
-        private val mFragmentList = ArrayList<Fragment>()
-        private val mFragmentTitleList = ArrayList<String>()
-
-        override fun getItem(position: Int): Fragment {
-            return mFragmentList[position]
-        }
-
-        override fun getCount(): Int {
-            return mFragmentList.size
-        }
-
-        fun addFragment(fragment: Fragment, title: String) {
-            mFragmentList.add(fragment)
-            mFragmentTitleList.add(title)
-        }
-
-        override fun getPageTitle(position: Int): CharSequence {
-            return mFragmentTitleList[position]
-        }
-    }
 }

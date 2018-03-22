@@ -30,8 +30,6 @@ class MyTopicsFragment : Fragment() {
 
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
-
-        //HomeActivity.adapterMyTopics = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.mytopics)
         rvtopics.adapter = HomeActivity.adapterMyTopics
 
 

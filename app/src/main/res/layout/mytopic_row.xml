@@ -43,22 +43,12 @@
             android:textColor="?attr/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/tvUserNameRow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tvTechNameRow"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"
-            android:text="jesusmad"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
-
-        <TextView
             android:id="@+id/tvDateRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tvTopicNameRow"
-            android:layout_alignEnd="@+id/tvUserNameRow"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
             android:text="01/03/18" />
     </RelativeLayout>
 
