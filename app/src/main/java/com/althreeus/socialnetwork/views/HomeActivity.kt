@@ -19,9 +19,6 @@ import com.althreeus.socialnetwork.model.Technology
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
-import com.althreeus.socialnetwork.model.Topic
-import com.althreeus.socialnetwork.model.User
-import com.althreeus.socialnetwork.services.SocialNetworkService
 import com.althreeus.socialnetwork.model.GithubUser
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -51,15 +48,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var user: User
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
+
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
-
 
         socialnetservice = SocialNetworkService.instance
         user = SocialNetworkService.userLogged!!
@@ -68,9 +64,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tabs.setupWithViewPager(viewpager)
 
         loadtopics()
-
         loadtechnologies()
-
 
         adapterLatest = CustomAdapterTopics(this, R.layout.topic_row, topics)
         adapterMyTopics = CustomAdapterTopics(this, R.layout.topic_row, mytopics)
@@ -133,7 +127,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             Log.d(TAG, "${topic.name}, ${topic.date}, Tech: ${topic.nametechnology}")
 
                             loadtopics()
-                            
+
+
                             adapterLatest.notifyDataSetChanged()
                             adapterMyTopics.notifyDataSetChanged()
 
@@ -170,8 +165,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         topics.clear()
         mytopics.clear()
 
-        val aux = socialnetservice.getTopics()
 
+        val aux = socialnetservice.getTopics()
         topics.forEach { if (it.iduser == user.id) mytopics.add(it)}
 
         aux.forEach {
