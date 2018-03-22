@@ -15,6 +15,7 @@ import com.althreeus.socialnetwork.R
 
 class MyTopicsFragment : Fragment() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,8 +31,8 @@ class MyTopicsFragment : Fragment() {
         rvtopics.layoutManager = LinearLayoutManager(activity)
 
 
-        val adapter = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.mytopics)
-        rvtopics.adapter = adapter
+        //HomeActivity.adapterMyTopics = CustomAdapterTopics(activity, R.layout.topic_row, HomeActivity.mytopics)
+        rvtopics.adapter = HomeActivity.adapterMyTopics
 
 
         return view

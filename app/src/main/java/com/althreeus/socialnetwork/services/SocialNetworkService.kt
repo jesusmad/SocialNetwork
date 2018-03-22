@@ -308,6 +308,45 @@ class SocialNetworkService : ServiceBase() {
 
 
     }
+
+    fun getTechnologies(): List<Technology> {
+
+        var tech = ArrayList<Technology>()
+        apiService.getTechnologies()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(
+                        { body ->
+
+                            tech = body.technologys
+
+
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+
+
+
+                        },
+                        { error ->
+                            Log.d("Gestor",error.message)
+                            synchronized(monitor){
+                                monitor.notifyAll()
+                            }
+                        }
+
+
+                )
+
+        synchronized(monitor){
+            monitor.wait()
+        }
+
+
+
+        return tech
+    }
+
     fun addCategory(name: String):Category?{
 
         var category:Category? = null

@@ -1,69 +1,74 @@
 package com.althreeus.socialnetwork.views
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-<<<<<<< HEAD
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-=======
-import android.support.design.widget.Snackbar
->>>>>>> develop
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
+import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 import com.althreeus.socialnetwork.R
-<<<<<<< HEAD
+import com.althreeus.socialnetwork.model.Technology
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
-=======
-import com.althreeus.socialnetwork.model.GithubUser
->>>>>>> develop
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import java.util.ArrayList
+import org.jetbrains.anko.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
-<<<<<<< HEAD
     companion object {
-        var topics: ArrayList<Topic> = ArrayList()
-        var mytopics: ArrayList<Topic> = ArrayList()
+        val TAG = "*** JR ***"
+
+
+        lateinit var adapterLatest: CustomAdapterTopics
+        lateinit var adapterMyTopics: CustomAdapterTopics
     }
+
+
+    private var topics: ArrayList<Topic> = ArrayList()
+    private var mytopics: ArrayList<Topic> = ArrayList()
+
+    private var technologies: ArrayList<Technology> = ArrayList()
 
 
     private lateinit var socialnetservice: SocialNetworkService
 
     private lateinit var user: User
 
-
-=======
->>>>>>> develop
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-<<<<<<< HEAD
+
+        socialnetservice = SocialNetworkService.instance
+        user = SocialNetworkService.userLogged!!
+
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
 
-        socialnetservice = SocialNetworkService.instance
-
-        user = SocialNetworkService.userLogged!!
-
         loadtopics()
-=======
->>>>>>> develop
+        loadtechnologies()
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        adapterLatest = CustomAdapterTopics(this, R.layout.topic_row, topics)
+        adapterMyTopics = CustomAdapterTopics(this, R.layout.topic_row, mytopics)
+
+
+
+
+
+        fab.setOnClickListener { newTopic() }
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -73,12 +78,96 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
     }
 
+    private fun loadtechnologies() {
+
+        technologies = ArrayList(socialnetservice.getTechnologies())
+
+    }
+
+    private fun newTopic() {
+
+        alert {
+            title = "Add a Topic!"
+            customView {
+                verticalLayout {
+                    //backgroundResource = R.drawable.background
+                    lparams(width = wrapContent, height = wrapContent)
+
+                    val etName = editText {
+                        hint = "Name"
+                        padding = dip(10)
+                        setHighlightColor(Color.BLACK)
+                        setTextSize(18f)
+                    }
+
+                    val etTechnology = editText {
+                        hint = "Technology"
+                        padding = dip(10)
+                        setHighlightColor(Color.BLACK)
+                        setTextSize(18f)
+                    }
+
+                    neutralPressed("Close") {  }
+
+                    positiveButton("Save") {
+                        if (etName.text.isEmpty() || etTechnology.text.isEmpty())
+                            longToast("Topic not added. All fields are required")
+                        else {
+
+                            val techname = etTechnology.text.toString()
+                            val tech = checkTech(techname)
+
+                            val topic = socialnetservice.addTopic(user.id, tech!!.id, 2, etName.text.toString())!!
+
+                            Log.d(TAG, "${topic.name}, ${topic.date}, Tech: ${topic.nametechnology}")
+
+                            loadtopics()
+
+
+                            adapterLatest.notifyDataSetChanged()
+                            adapterMyTopics.notifyDataSetChanged()
+
+
+
+                        }
+
+                    }
+
+                }
+            }
+        }.show()
+
+
+    }
+
+    private fun checkTech(techname: String): Technology? {
+
+        technologies.forEach {
+            Log.d(TAG, it.name)
+            if (it.name == techname)
+                return it
+        }
+
+        val tech = socialnetservice.addTechnology(techname)
+        Log.d(TAG, "TECH FROM API: ${tech!!.name}")
+        technologies.add(tech!!)
+
+        return tech
+    }
+
     private fun loadtopics() {
 
-        topics = ArrayList(socialnetservice.getTopics())
+        topics.clear()
+        mytopics.clear()
 
-        topics.forEach { if (it.idUser == user.id) mytopics.add(it)}
 
+        val aux = socialnetservice.getTopics()
+
+        aux.forEach {
+            topics.add(it)
+            if (it.iduser == user.id)
+                mytopics.add(it)
+        }
 
 
     }
