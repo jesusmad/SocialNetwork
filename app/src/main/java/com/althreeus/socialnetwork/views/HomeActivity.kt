@@ -7,10 +7,7 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-<<<<<<< HEAD
-=======
 import android.support.design.widget.Snackbar
->>>>>>> develop
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -18,17 +15,14 @@ import android.util.Log
 import android.view.MenuItem
 import com.althreeus.realtimedbfirebase.adapter.CustomAdapterTopics
 import com.althreeus.socialnetwork.R
-<<<<<<< HEAD
 import com.althreeus.socialnetwork.model.Technology
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
-=======
 import com.althreeus.socialnetwork.model.Topic
 import com.althreeus.socialnetwork.model.User
 import com.althreeus.socialnetwork.services.SocialNetworkService
 import com.althreeus.socialnetwork.model.GithubUser
->>>>>>> develop
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import org.jetbrains.anko.*
@@ -57,22 +51,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var user: User
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> develop
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-<<<<<<< HEAD
-=======
-
         setupViewPager()
         tabs.setupWithViewPager(viewpager)
->>>>>>> develop
+
 
         socialnetservice = SocialNetworkService.instance
         user = SocialNetworkService.userLogged!!
@@ -81,11 +68,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         tabs.setupWithViewPager(viewpager)
 
         loadtopics()
-<<<<<<< HEAD
-        loadtechnologies()
-=======
 
->>>>>>> develop
+        loadtechnologies()
+
 
         adapterLatest = CustomAdapterTopics(this, R.layout.topic_row, topics)
         adapterMyTopics = CustomAdapterTopics(this, R.layout.topic_row, mytopics)
@@ -185,12 +170,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         topics.clear()
         mytopics.clear()
 
-
-<<<<<<< HEAD
         val aux = socialnetservice.getTopics()
-=======
+
         topics.forEach { if (it.iduser == user.id) mytopics.add(it)}
->>>>>>> develop
 
         aux.forEach {
             topics.add(it)
