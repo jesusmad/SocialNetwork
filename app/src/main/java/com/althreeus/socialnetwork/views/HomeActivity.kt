@@ -122,8 +122,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             Log.d(TAG, "${topic.name}, ${topic.date}, Tech: ${topic.nametechnology}")
 
                             loadtopics()
-
-
+                            
                             adapterLatest.notifyDataSetChanged()
                             adapterMyTopics.notifyDataSetChanged()
 
